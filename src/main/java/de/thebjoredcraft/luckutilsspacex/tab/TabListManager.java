@@ -1,6 +1,8 @@
 package de.thebjoredcraft.luckutilsspacex.tab;
 
 import de.thebjoredcraft.luckutilsspacex.LuckUtilsX;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.luckperms.api.LuckPermsProvider;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
@@ -11,8 +13,12 @@ import org.bukkit.scheduler.BukkitTask;
 public class TabListManager {
     public static void updateTablist(){
         for (Player player : Bukkit.getOnlinePlayers()){
+            MiniMessage mHeader = MiniMessage.miniMessage();
+            MiniMessage mFooter = MiniMessage.miniMessage();
+
+            Component header = mHeader.deserialize("<bold><gradient:#ff8400:#fbff00>SpaceX Community Server SMP </gradient>");
+            Component footer = mFooter.deserialize("<color:#5b0187><color:#7102a8><color:#8e02d4><color:#ab03ff>twitch.tv/spacemitx</color></color></color></color> <color:#303030><></color> <color:#e00000>youtube.com/@spacemitx</color>");
             String prefix = LuckPermsProvider.get().getPlayerAdapter(Player.class).getUser(player).getCachedData().getMetaData().getPrefix();
-            int ping = player.getPing();
 
             boolean isregistered = player.hasPermission(LuckUtilsX.getInstance().getConfig().getString("RegPermisson", ""));
             String registered = isregistered ? LuckUtilsX.getInstance().getConfig().getString("RegFormatOn", "") : LuckUtilsX.getInstance().getConfig().getString("RegFormatOff", "");
@@ -22,18 +28,18 @@ public class TabListManager {
 
             if(prefix != null) {
                 String PlayerListNameFormat1 = LuckUtilsX.getInstance().getConfig().getString("PlayerListNameFormat", "").replace("%playername%", player.getName());
-                String PlayerListHeader1 = LuckUtilsX.getInstance().getConfig().getString("PlayerListHeader", "").replace("%playername%", player.getName());
-                String PlayerListFooter1 = LuckUtilsX.getInstance().getConfig().getString("PlayerListFooter", "").replace("%playername%", player.getName());
+                //                player.setPlayerListHeader(PlayerListHeader2);
+                //                player.setPlayerListFooter(PlayerListFooter2);
 
                 String PlayerListNameFormat2 = PlayerListNameFormat1.replace("%luckperms_prefix%", prefix);
                 String PlayerListNameFormat3 = PlayerListNameFormat2.replace("%registered%", registered);
                 String PlayerListNameFormat4 = PlayerListNameFormat3.replace("%afk%", afk);
-                String PlayerListHeader2 = PlayerListHeader1.replace("%luckperms_prefix%", prefix);
-                String PlayerListFooter2 = PlayerListFooter1.replace("%luckperms_prefix%", prefix);
+                //                player.setPlayerListHeader(PlayerListHeader2);
+                //                player.setPlayerListFooter(PlayerListFooter2);
 
                 player.setPlayerListName(PlayerListNameFormat4);
-                player.setPlayerListHeader(PlayerListHeader2);
-                player.setPlayerListFooter(PlayerListFooter2);
+                //                player.setPlayerListHeader(PlayerListHeader2);
+                //                player.setPlayerListFooter(PlayerListFooter2);
             }else{
                 player.sendMessage("[LuckUtils] Der Prefix ist null, bitte erstelle eine LuckPerms-Gruppe mit Prefix um LuckUtls benutzten zu können!");
             }

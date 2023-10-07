@@ -2,7 +2,6 @@ package de.thebjoredcraft.luckutilsspacex;
 
 import de.thebjoredcraft.luckutilsspacex.chat.ChatManager;
 import de.thebjoredcraft.luckutilsspacex.tab.TabListManager;
-import de.thebjoredcraft.luckutilsspacex.utils.AfkCommand;
 import net.luckperms.api.LuckPerms;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
