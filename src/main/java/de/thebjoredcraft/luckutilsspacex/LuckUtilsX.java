@@ -27,7 +27,6 @@ public final class LuckUtilsX extends JavaPlugin {
         getLogger().info(ChatColor.GREEN + "(LU) LuckUtils wird geladen!");
 
         getServer().getPluginManager().registerEvents(new ChatManager(), this);
-        getCommand("afk").setExecutor(new AfkCommand());
 
         if (Bukkit.getPluginManager().isPluginEnabled("LuckPerms")) {
             getLogger().info("(LU) LuckPerms Plugin gefunden!");
