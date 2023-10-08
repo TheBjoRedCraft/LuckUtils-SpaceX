@@ -46,6 +46,7 @@ public final class LuckUtilsX extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        saveDefaultConfig();
         if(getInstance().getConfig().getBoolean("UpdateTabList")){
             TabListManager.stopTabListUpdate();
         }
