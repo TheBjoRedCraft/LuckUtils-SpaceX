@@ -28,18 +28,13 @@ public class TabListManager {
 
             if(prefix != null) {
                 String PlayerListNameFormat1 = LuckUtilsX.getInstance().getConfig().getString("PlayerListNameFormat", "").replace("%playername%", player.getName());
-                //                player.setPlayerListHeader(PlayerListHeader2);
-                //                player.setPlayerListFooter(PlayerListFooter2);
-
                 String PlayerListNameFormat2 = PlayerListNameFormat1.replace("%luckperms_prefix%", prefix);
                 String PlayerListNameFormat3 = PlayerListNameFormat2.replace("%registered%", registered);
                 String PlayerListNameFormat4 = PlayerListNameFormat3.replace("%afk%", afk);
-                //                player.setPlayerListHeader(PlayerListHeader2);
-                //                player.setPlayerListFooter(PlayerListFooter2);
 
                 player.setPlayerListName(PlayerListNameFormat4);
-                //                player.setPlayerListHeader(PlayerListHeader2);
-                //                player.setPlayerListFooter(PlayerListFooter2);
+                player.sendPlayerListFooter(footer);
+                player.sendPlayerListHeader(header);
             }else{
                 player.sendMessage("[LuckUtils] Der Prefix ist null, bitte erstelle eine LuckPerms-Gruppe mit Prefix um LuckUtls benutzten zu können!");
             }
